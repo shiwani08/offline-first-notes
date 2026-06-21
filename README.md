@@ -113,6 +113,18 @@ Device priority list syncs separately via last-writer-wins on `devices.updated_a
 - Multi-user support (would require true CRDTs or OT instead of Last-Writer-Wins).
 - Adopting a sync library (WatermelonDB, PowerSync, Automerge) once the hand-built version is understood.
 
+## Modules - 
+1. Authentication - done
+2. Local storage layer — Dexie/IndexedDB setup mirroring note_state, operations, sync_cursor
+3. Notes CRUD UI — create/edit/delete, reading and writing local-first
+4. Device registry — devices table, priority rank, registering a device on first login
+5. HLC clock — the (time, counter) logic for ordering edits
+6. Operations log + sync engine — push/pull against Supabase's operations table
+7. Conflict resolution — applying the priority-tuple comparison on pull
+8. Background/automatic sync triggering — online detection, no manual "sync" button
+9. PWA packaging — installable manifest + service worker
+10. New-device bootstrap — full replay from server history
+
 ## Development
 
 ```bash
