@@ -6,11 +6,21 @@ import './AuthPage.css'
 
 type Mode = 'login' | 'signup' | 'forgot-password'
 
-export function AuthPage() {
-  const [mode, setMode] = useState<Mode>('login')
+interface AuthPageProps {
+  initialMode?: Mode
+  onBack?: () => void
+}
+
+export function AuthPage({ initialMode = 'login', onBack }: AuthPageProps) {
+  const [mode, setMode] = useState<Mode>(initialMode)
 
   return (
     <div className="auth-page">
+      {onBack && (
+        <button type="button" className="auth-back-btn" onClick={onBack}>
+          ← Back
+        </button>
+      )}
       {mode === 'login' && (
         <Login
           onSwitchToSignup={() => setMode('signup')}

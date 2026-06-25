@@ -1,9 +1,26 @@
 .auth-page {
+  position: relative;
   flex-grow: 1;
   display: flex;
   place-content: center;
   place-items: center;
   padding: 24px;
+}
+
+.auth-back-btn {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--text);
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--text-h);
+  }
 }
 
 .auth-form {

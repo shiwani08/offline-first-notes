@@ -1,10 +1,14 @@
+import { useState } from 'react'
 import { useAuth } from './contexts/useAuth'
+import { LandingPage } from './pages/LandingPage'
 import { AuthPage } from './pages/AuthPage'
 import { ResetPassword } from './pages/ResetPassword'
 import './App.css'
 
 function App() {
   const { session, user, loading, passwordRecovery, signOut } = useAuth()
+  const [showAuth, setShowAuth] = useState(false)
+  const [authMode, setAuthMode] = useState<'login' | 'signup'>('login')
 
   if (loading) {
     return (
@@ -24,7 +28,21 @@ function App() {
   // The real enforcement is Supabase RLS on the data tables — this just keeps
   // the UI from showing protected content while logged out.
   if (!session) {
-    return <AuthPage />
+    if (!showAuth) {
+      return (
+        <LandingPage
+          onLogin={() => {
+            setAuthMode('login')
+            setShowAuth(true)
+          }}
+          onGetStarted={() => {
+            setAuthMode('signup')
+            setShowAuth(true)
+          }}
+        />
+      )
+    }
+    return <AuthPage initialMode={authMode} onBack={() => setShowAuth(false)} />
   }
 
   return (
