@@ -59,7 +59,7 @@ export function LandingPage({ onLogin, onGetStarted }: LandingPageProps) {
       </section>
 
       <footer className="landing-footer">
-        <p>Notes — built for one person, all their devices.</p>
+        <p>Made with ❤️ by Shiwani</p>
       </footer>
     </div>
   )
