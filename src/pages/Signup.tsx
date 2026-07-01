@@ -48,6 +48,7 @@ export function Signup({ onSwitchToLogin }: { onSwitchToLogin: () => void }) {
           value={displayName}
           onChange={(event) => setDisplayName(event.target.value)}
           autoComplete="name"
+          placeholder="Enter your name"
           required
         />
       </label>
@@ -59,6 +60,7 @@ export function Signup({ onSwitchToLogin }: { onSwitchToLogin: () => void }) {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           autoComplete="email"
+          placeholder="Enter your email"
           required
         />
       </label>
@@ -70,6 +72,7 @@ export function Signup({ onSwitchToLogin }: { onSwitchToLogin: () => void }) {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           autoComplete="new-password"
+          placeholder="Enter your password"
           minLength={6}
           required
         />
